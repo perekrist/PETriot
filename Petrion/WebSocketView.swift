@@ -65,6 +65,7 @@ struct WebSocketView: View {
                 id = i
               }
             }
+            print(id)
             self.service.writeStringInt(text: "[\(id)]")
           }
           self.select = ""
@@ -73,9 +74,11 @@ struct WebSocketView: View {
           }
           if self.service.response?.type == "location" {
             if annotation.count > 0 {
-              print(annotation[0].coordinate.latitude, Float(annotation[0].coordinate.longitude))
-              self.service.writeLocation(lat: Float(annotation[0].coordinate.latitude), lng: Float(annotation[0].coordinate.longitude))
+              self.service.writeLocation(lat: Float(56.29), lng: Float(84.56))
             }
+          }
+          if self.service.response?.type == "string" {
+            self.service.writeString(text: "я возвращалась из магазина домой и увидела, как во дворе дома 46А по ул.Барабашова около 11.00 мужчина невысокого роста, на вид 30-35 лет в чёрной шапке и кожанной куртке чёрного цвета с терракотовой вставкой в виде буквы V, кормил беспородного чёрно-белого щенка, проживающего на территории этого двора. Через 40 минут мне сообщили, что во дворе этого дома умирает щенок с такими же признаками отравления, как и все собаки из нашего микрорайона. Когда я пришла, то убедилась, что это был тот самый щенок, которого кормил вышеописанный мужчина.")
           }
         } label: {
           Text("Продолжить")

@@ -96,6 +96,12 @@ class WebsocketService: WebSocketDelegate, ObservableObject {
     write(text: "{\"cmd\": \"answer\", \"answer\": \(text), \"id\": \(id)}")
   }
   
+  func writeString(text: String) {
+    guard let response = response else { return }
+    guard let id = response.id else { return }
+    write(text: "{\"cmd\": \"answer\", \"answer\": \"\(text)\", \"id\": \(id)}")
+  }
+  
   func writeFile(fileName: String) {
     guard let response = response else { return }
     guard let id = response.id else { return }
