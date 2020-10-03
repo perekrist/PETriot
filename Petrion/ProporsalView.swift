@@ -120,7 +120,7 @@ struct ProporsalView: View {
 //              }.padding(.horizontal)
 //            }
             Button {
-              openInSafari(url: URLs.pdf)
+              openInSafari(url: "https://p3project.herokuapp.com/view/\(id)")
             } label: {
               HStack {
                 Text("Посмотреть заявление")
