@@ -6,6 +6,7 @@
 import Foundation
 import SwiftUI
 import Alamofire
+import SwiftyJSON
 
 class NetworkService: ObservableObject {  
   func uploadImage(image: UIImage?, fileName: String, key: String, completion: @escaping() -> Void) {
@@ -14,10 +15,10 @@ class NetworkService: ObservableObject {
       multipartFormData: { multipartFormData in
         multipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "upload_data" , fileName: "\(fileName).jpeg", mimeType: "image/jpeg")
       },
-      to: "https://p3project.herokuapp.com/api/upload?key=\(key)?fileName=\(fileName).jpeg", method: .post)
+      to: "https://p3project.herokuapp.com/api/upload?key=\(key)&filename=\(fileName).jpeg", method: .post)
       .response { response in
         switch response.result {
-        case.success(let _):
+        case.success(let data):
           completion()
         case.failure(let error):
           fatalError(error.localizedDescription)

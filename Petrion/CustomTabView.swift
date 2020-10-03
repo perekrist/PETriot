@@ -101,18 +101,14 @@ struct DetailView : View {
   
   var course : Course
   @State var showShareSheet = false
+  @State var cost = 540
   
   var body: some View{
     
-    VStack{
-      
-      Text(course.name)
-        .font(.title2)
-        .fontWeight(.bold)
-        .padding()
-      
+    VStack {
+      Spacer()
       Button {
-        
+        self.cost -= 50
       } label: {
         Text("Задонатить 50 руб")
           .bold()
@@ -120,7 +116,7 @@ struct DetailView : View {
       }.padding()
       Image("hum")
       VStack {
-        Text("Задонать еще 540 руб, чтобы повысить уровень!")
+        Text("Задонать еще \(cost) руб, чтобы повысить уровень!")
           .multilineTextAlignment(.center)
           .font(.headline)
         HStack {

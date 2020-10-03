@@ -16,6 +16,7 @@ class WebsocketService: WebSocketDelegate, ObservableObject {
   
   func connect() {
     var request = URLRequest(url: URL(string: "wss://p3project.herokuapp.com/ws")!)
+    request.headers = ["Authorization": "0"]
     request.timeoutInterval = 60
     socket = WebSocket(request: request)
     socket.delegate = self
@@ -79,11 +80,10 @@ class WebsocketService: WebSocketDelegate, ObservableObject {
     let jsonData = text.data(using: .utf8)!
     let response: Response = try! JSONDecoder().decode(Response.self, from: jsonData)
     self.response = response
-    if response.cmd == "debug" {
+    if response.cmd == "debug" || response.cmd == "end" {
       self.response = nil
     }
   }
-  
   func writeLocation(lat: Float, lng: Float) {
     guard let response = response else { return }
     guard let id = response.id else { return }
@@ -113,7 +113,7 @@ struct Response: Decodable {
   let question: String?
   var id: Int?
   let type: String?
-  let answer: [String]?
+  let answers: [String]?
   let cmd: String
   let key: String?
   // debug

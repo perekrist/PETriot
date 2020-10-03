@@ -30,11 +30,12 @@ struct Home: View {
         
         NavigationLink(destination: ProfileView()) {
           
-          Image("profile")
+          Image("logo")
             .resizable()
             .renderingMode(.original)
             .frame(width: 60, height: 60)
-            .cornerRadius(10)
+            .aspectRatio(contentMode: .fill)
+            .clipShape(Circle())
         }
       }
       .padding()
