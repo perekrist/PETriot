@@ -25,4 +25,53 @@ class NetworkService: ObservableObject {
         }
       }
   }
+  
+  func getProporsals(completion: @escaping (Swift.Result<ProporsalResponse, Error>) -> Void) {
+    let headers: HTTPHeaders = ["Authorization": "0"]
+    AF.request("https://p3project.herokuapp.com/api/proposal", method: .get, headers: headers).responseData { response in
+      switch response.result {
+      case.success(let data):
+        let decoder = JSONDecoder()
+        do {
+          let decodedData = try decoder.decode(ProporsalResponse.self, from: data)
+          completion(Swift.Result.success(decodedData))
+        } catch (let error) {
+          completion(Swift.Result.failure(error))
+          return
+        }
+      case.failure(let error):
+        fatalError(error.localizedDescription)
+      }
+    }
+  }
+  
+  func getPetitions(completion: @escaping (Swift.Result<PetitionResponse, Error>) -> Void) {
+    let headers: HTTPHeaders = ["Authorization": "0"]
+    AF.request("https://p3project.herokuapp.com/api/petition", method: .get, headers: headers).responseData { response in
+      switch response.result {
+      case.success(let data):
+        let decoder = JSONDecoder()
+        do {
+          let decodedData = try decoder.decode(PetitionResponse.self, from: data)
+          completion(Swift.Result.success(decodedData))
+        } catch (let error) {
+          completion(Swift.Result.failure(error))
+          return
+        }
+      case.failure(let error):
+        fatalError(error.localizedDescription)
+      }
+    }
+  }
+}
+struct PetitionResponse: Decodable {
+  let result: [Int]
+}
+
+struct ProporsalResponse: Decodable {
+  let result: [Id]
+}
+
+struct Id: Decodable, Hashable {
+  let id: Int
 }

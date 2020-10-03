@@ -60,7 +60,7 @@ class StatusAsset {
 
 struct ProporsalView: View {
   @State var moreInfo = false
-  @State var proporsal: Proporsal
+  @State var id: Int
   var statusAsset = StatusAsset()
   var body: some View {
     ZStack {
@@ -69,15 +69,12 @@ struct ProporsalView: View {
         .edgesIgnoringSafeArea(.all)
       VStack {
         VStack(alignment: .leading) {
-          Text(proporsal.description)
+          Text("Заявлние N\(id)")
             .bold()
             .font(.title)
             .padding()
           
           HStack {
-//            Text(proporsal.description)
-//              .font(.caption)
-//              .padding()
             Spacer()
             Image(systemName: statusAsset.imageName)
               .font(.system(size: 24))

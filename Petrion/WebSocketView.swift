@@ -81,15 +81,28 @@ struct WebSocketView: View {
           Text("Продолжить")
         }.padding()
       } else {
-        Text("Нажмите начать, чтобы приступить к заполнению заявления")
-          .font(.title)
-          .bold()
-          .multilineTextAlignment(.center)
-          .padding()
-        Button {
-          self.service.connect()
-        } label: {
-          Text("Начать")
+        if self.service.response?.cmd == "end" {
+          Text("Ваша заявка принята!")
+            .font(.title)
+            .bold()
+            .multilineTextAlignment(.center)
+            .padding()
+          Button {
+            self.service.connect()
+          } label: {
+            Text("Отправить еще одну")
+          }.padding()
+        } else {
+          Text("Нажмите начать, чтобы приступить к заполнению заявления")
+            .font(.title)
+            .bold()
+            .multilineTextAlignment(.center)
+            .padding()
+          Button {
+            self.service.connect()
+          } label: {
+            Text("Начать")
+          }.padding()
         }
       }
     }

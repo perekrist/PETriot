@@ -7,6 +7,8 @@ import SwiftUI
 
 struct PetitionView: View {
   @State var count = Int.random(in: 2..<20)
+  @State var id: Int
+  @State var petitions: [Int] = []
   var body: some View {
     ZStack {
       Color(UIColor.systemPink)
@@ -14,13 +16,9 @@ struct PetitionView: View {
         .edgesIgnoringSafeArea(.all)
       VStack {
         VStack(alignment: .leading) {
-          Text("Very Long Petition Title")
+          Text("Петиция N\(id)")
             .bold()
             .font(.title)
-            .padding()
-          
-          Text("Very Long Petition description")
-            .font(.caption)
             .padding()
         }.background(Color.white)
         .cornerRadius(12)
@@ -49,11 +47,5 @@ struct PetitionView: View {
     }.cornerRadius(6)
     .padding()
     .shadow(radius: 8)
-  }
-}
-
-struct PetitionView_Previews: PreviewProvider {
-  static var previews: some View {
-    PetitionView()
   }
 }

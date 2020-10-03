@@ -80,7 +80,7 @@ class WebsocketService: WebSocketDelegate, ObservableObject {
     let jsonData = text.data(using: .utf8)!
     let response: Response = try! JSONDecoder().decode(Response.self, from: jsonData)
     self.response = response
-    if response.cmd == "debug" || response.cmd == "end" {
+    if response.cmd == "debug" {
       self.response = nil
     }
   }

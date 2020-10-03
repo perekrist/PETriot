@@ -86,12 +86,22 @@ struct TabButton : View {
 }
 
 struct Email : View {
-  
-  var body: some View{
+  var service = NetworkService()
+  @State var petitions: [Int] = []
+  var body: some View {
     
     ScrollView(.vertical, showsIndicators: false) {
-      ForEach(0..<15) { i in
-        PetitionView()
+      ForEach(petitions, id: \.self) { id in
+        PetitionView(id: id)
+      }
+    }.onAppear {
+      self.service.getPetitions { (result) in
+        switch result {
+        case.success(let petitions):
+          self.petitions = petitions.result
+        case .failure(_):
+          print("error")
+        }
       }
     }
   }
