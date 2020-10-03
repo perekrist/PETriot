@@ -3,23 +3,53 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7EE5AE298216CDE0593638B3 /* Pods_Petrion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 737833FD34A26C80B060A561 /* Pods_Petrion.framework */; };
 		CA10202525283E6D002E6B27 /* PetrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10202425283E6D002E6B27 /* PetrionApp.swift */; };
 		CA10202725283E6D002E6B27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10202625283E6D002E6B27 /* ContentView.swift */; };
 		CA10202925283E71002E6B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA10202825283E71002E6B27 /* Assets.xcassets */; };
 		CA10202C25283E71002E6B27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA10202B25283E71002E6B27 /* Preview Assets.xcassets */; };
+		CA10203825283EAA002E6B27 /* CourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10203425283EAA002E6B27 /* CourseCardView.swift */; };
+		CA10203925283EAA002E6B27 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10203525283EAA002E6B27 /* Course.swift */; };
+		CA10203A25283EAA002E6B27 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10203625283EAA002E6B27 /* CustomTabView.swift */; };
+		CA10203B25283EAA002E6B27 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10203725283EAA002E6B27 /* HomeView.swift */; };
+		CA10203E252844ED002E6B27 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10203D252844ED002E6B27 /* FolderView.swift */; };
+		CA10204125284550002E6B27 /* ProporsalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10204025284550002E6B27 /* ProporsalView.swift */; };
+		CA1020442528483B002E6B27 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1020432528483B002E6B27 /* ProfileView.swift */; };
+		CA1020472528498E002E6B27 /* PetitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1020462528498E002E6B27 /* PetitionView.swift */; };
+		CA10204D25284D2E002E6B27 /* WebsocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10204C25284D2E002E6B27 /* WebsocketService.swift */; };
+		CA10205025284D3E002E6B27 /* WebSocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10204F25284D3E002E6B27 /* WebSocketView.swift */; };
+		CA10205B25287E8F002E6B27 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10205A25287E8F002E6B27 /* ImagePicker.swift */; };
+		CA10205E25287FD7002E6B27 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10205D25287FD7002E6B27 /* NetworkService.swift */; };
+		CA102066252885E9002E6B27 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA102065252885E9002E6B27 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		061B97D3310E246A14B116EA /* Pods-Petrion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petrion.debug.xcconfig"; path = "Target Support Files/Pods-Petrion/Pods-Petrion.debug.xcconfig"; sourceTree = "<group>"; };
+		4D5B6C0F62F9E36012A0C2CA /* Pods-Petrion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petrion.release.xcconfig"; path = "Target Support Files/Pods-Petrion/Pods-Petrion.release.xcconfig"; sourceTree = "<group>"; };
+		737833FD34A26C80B060A561 /* Pods_Petrion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petrion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA10202125283E6D002E6B27 /* Petrion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petrion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA10202425283E6D002E6B27 /* PetrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetrionApp.swift; sourceTree = "<group>"; };
 		CA10202625283E6D002E6B27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA10202825283E71002E6B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA10202B25283E71002E6B27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA10202D25283E71002E6B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA10203425283EAA002E6B27 /* CourseCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCardView.swift; sourceTree = "<group>"; };
+		CA10203525283EAA002E6B27 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		CA10203625283EAA002E6B27 /* CustomTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		CA10203725283EAA002E6B27 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CA10203D252844ED002E6B27 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		CA10204025284550002E6B27 /* ProporsalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProporsalView.swift; sourceTree = "<group>"; };
+		CA1020432528483B002E6B27 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CA1020462528498E002E6B27 /* PetitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetitionView.swift; sourceTree = "<group>"; };
+		CA10204C25284D2E002E6B27 /* WebsocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsocketService.swift; sourceTree = "<group>"; };
+		CA10204F25284D3E002E6B27 /* WebSocketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketView.swift; sourceTree = "<group>"; };
+		CA10205A25287E8F002E6B27 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CA10205D25287FD7002E6B27 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CA102065252885E9002E6B27 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EE5AE298216CDE0593638B3 /* Pods_Petrion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710D1E70422482FF4D48D91F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				737833FD34A26C80B060A561 /* Pods_Petrion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71609D2699BF0D6FF269DF48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				061B97D3310E246A14B116EA /* Pods-Petrion.debug.xcconfig */,
+				4D5B6C0F62F9E36012A0C2CA /* Pods-Petrion.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CA10201825283E6D002E6B27 = {
 			isa = PBXGroup;
 			children = (
 				CA10202325283E6D002E6B27 /* Petrion */,
 				CA10202225283E6D002E6B27 /* Products */,
+				71609D2699BF0D6FF269DF48 /* Pods */,
+				710D1E70422482FF4D48D91F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,10 +103,23 @@
 			isa = PBXGroup;
 			children = (
 				CA10202425283E6D002E6B27 /* PetrionApp.swift */,
+				CA10203525283EAA002E6B27 /* Course.swift */,
+				CA10203425283EAA002E6B27 /* CourseCardView.swift */,
+				CA10203625283EAA002E6B27 /* CustomTabView.swift */,
+				CA10203725283EAA002E6B27 /* HomeView.swift */,
 				CA10202625283E6D002E6B27 /* ContentView.swift */,
+				CA1020462528498E002E6B27 /* PetitionView.swift */,
+				CA10204C25284D2E002E6B27 /* WebsocketService.swift */,
+				CA10204F25284D3E002E6B27 /* WebSocketView.swift */,
+				CA10205A25287E8F002E6B27 /* ImagePicker.swift */,
+				CA10205D25287FD7002E6B27 /* NetworkService.swift */,
+				CA102065252885E9002E6B27 /* MapView.swift */,
 				CA10202825283E71002E6B27 /* Assets.xcassets */,
 				CA10202D25283E71002E6B27 /* Info.plist */,
 				CA10202A25283E71002E6B27 /* Preview Content */,
+				CA10203D252844ED002E6B27 /* FolderView.swift */,
+				CA10204025284550002E6B27 /* ProporsalView.swift */,
+				CA1020432528483B002E6B27 /* ProfileView.swift */,
 			);
 			path = Petrion;
 			sourceTree = "<group>";
@@ -76,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA10203025283E71002E6B27 /* Build configuration list for PBXNativeTarget "Petrion" */;
 			buildPhases = (
+				29CD581F487FE2718C5E699F /* [CP] Check Pods Manifest.lock */,
 				CA10201D25283E6D002E6B27 /* Sources */,
 				CA10201E25283E6D002E6B27 /* Frameworks */,
 				CA10201F25283E6D002E6B27 /* Resources */,
+				FED22CB06196E770D2B0E1F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,13 +198,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29CD581F487FE2718C5E699F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Petrion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FED22CB06196E770D2B0E1F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Petrion/Pods-Petrion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Petrion/Pods-Petrion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Petrion/Pods-Petrion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CA10201D25283E6D002E6B27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA10205B25287E8F002E6B27 /* ImagePicker.swift in Sources */,
+				CA10205025284D3E002E6B27 /* WebSocketView.swift in Sources */,
+				CA1020472528498E002E6B27 /* PetitionView.swift in Sources */,
+				CA10204D25284D2E002E6B27 /* WebsocketService.swift in Sources */,
+				CA10203925283EAA002E6B27 /* Course.swift in Sources */,
+				CA1020442528483B002E6B27 /* ProfileView.swift in Sources */,
+				CA10205E25287FD7002E6B27 /* NetworkService.swift in Sources */,
+				CA102066252885E9002E6B27 /* MapView.swift in Sources */,
+				CA10203E252844ED002E6B27 /* FolderView.swift in Sources */,
 				CA10202725283E6D002E6B27 /* ContentView.swift in Sources */,
+				CA10204125284550002E6B27 /* ProporsalView.swift in Sources */,
+				CA10203A25283EAA002E6B27 /* CustomTabView.swift in Sources */,
+				CA10203B25283EAA002E6B27 /* HomeView.swift in Sources */,
 				CA10202525283E6D002E6B27 /* PetrionApp.swift in Sources */,
+				CA10203825283EAA002E6B27 /* CourseCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +384,7 @@
 		};
 		CA10203125283E71002E6B27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 061B97D3310E246A14B116EA /* Pods-Petrion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -286,6 +407,7 @@
 		};
 		CA10203225283E71002E6B27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D5B6C0F62F9E36012A0C2CA /* Pods-Petrion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
