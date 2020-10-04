@@ -11,7 +11,7 @@ struct FolderView: View {
     var body: some View {
       ScrollView(.vertical, showsIndicators: false) {
         VStack {
-          ForEach(proporsals, id: \.self) { id in
+          ForEach(proporsals.reversed(), id: \.self) { id in
             ProporsalView(id: id.id)
           }
         }.onAppear {

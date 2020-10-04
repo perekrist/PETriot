@@ -91,7 +91,7 @@ struct Email : View {
   var body: some View {
     
     ScrollView(.vertical, showsIndicators: false) {
-      ForEach(petitions, id: \.self) { id in
+      ForEach(petitions.reversed(), id: \.self) { id in
         PetitionView(id: id)
       }
     }.onAppear {

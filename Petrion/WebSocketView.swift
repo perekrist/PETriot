@@ -14,6 +14,7 @@ struct WebSocketView: View {
   @State private var inputImage: UIImage?
   @State var annotation: [MKPointAnnotation] = []
   @State var select = ""
+  @State var text = ""
   var body: some View {
     VStack {
       if service.response != nil {
@@ -33,7 +34,7 @@ struct WebSocketView: View {
           if inputImage != nil {
             Image(uiImage: inputImage!)
               .resizable()
-              .frame(width: 200, height: 200)
+              .frame(width: 250, height: 200)
               .aspectRatio(contentMode: .fill)
               .padding(.horizontal, 5)
               .padding(.bottom)
@@ -57,35 +58,85 @@ struct WebSocketView: View {
               print(annotation.first!.coordinate)
             }
         }
-        Button {
-          if self.service.response?.type == "choice" {
-            var id = 0
-            for i in 0..<(self.service.response?.answers?.count ?? 0) {
-              if self.service.response?.answers?[i] == select {
-                id = i
+        if service.response?.type == "string" {
+          MultilineTextField("Например, мой сосед убил кота", text: $text, onCommit: {
+            
+          })
+          .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray.opacity(0.5)))
+          .padding()
+        }
+        if self.service.response?.cmd != "end" {
+          Button {
+            if self.service.response?.type == "choice" {
+              var id = 0
+              for i in 0..<(self.service.response?.answers?.count ?? 0) {
+                if self.service.response?.answers?[i] == select {
+                  id = i
+                }
+              }
+              print(id)
+              self.service.writeStringInt(text: "[\(id)]")
+            }
+            self.select = ""
+            if self.service.response?.type == "file" {
+              loadImage()
+            }
+            if self.service.response?.type == "location" {
+              if annotation.count > 0 {
+                self.service.writeLocation(lat: Float(56.29), lng: Float(84.56))
               }
             }
-            print(id)
-            self.service.writeStringInt(text: "[\(id)]")
-          }
-          self.select = ""
-          if self.service.response?.type == "file" {
-            loadImage()
-          }
-          if self.service.response?.type == "location" {
-            if annotation.count > 0 {
-              self.service.writeLocation(lat: Float(56.29), lng: Float(84.56))
+            if self.service.response?.type == "string" {
+              self.service.writeString(text: self.text)
+//              self.service.writeString(text: "я возвращалась из магазина домой и увидела, как во дворе дома 46А по ул.Барабашова около 11.00 мужчина невысокого роста, на вид 30-35 лет в чёрной шапке и кожанной куртке чёрного цвета с терракотовой вставкой в виде буквы V, кормил беспородного чёрно-белого щенка, проживающего на территории этого двора. Через 40 минут мне сообщили, что во дворе этого дома умирает щенок с такими же признаками отравления, как и все собаки из нашего микрорайона. Когда я пришла, то убедилась, что это был тот самый щенок, которого кормил вышеописанный мужчина.")
             }
-          }
-          if self.service.response?.type == "string" {
-            self.service.writeString(text: "я возвращалась из магазина домой и увидела, как во дворе дома 46А по ул.Барабашова около 11.00 мужчина невысокого роста, на вид 30-35 лет в чёрной шапке и кожанной куртке чёрного цвета с терракотовой вставкой в виде буквы V, кормил беспородного чёрно-белого щенка, проживающего на территории этого двора. Через 40 минут мне сообщили, что во дворе этого дома умирает щенок с такими же признаками отравления, как и все собаки из нашего микрорайона. Когда я пришла, то убедилась, что это был тот самый щенок, которого кормил вышеописанный мужчина.")
-          }
-        } label: {
-          Text("Продолжить")
-        }.padding()
+          } label: {
+            Text("Продолжить")
+          }.padding()
+        } else {
+          Text("Ваша заявка принята! Спасибо за вашу помощь!")
+            .font(.title)
+            .bold()
+            .multilineTextAlignment(.center)
+            .padding()
+          Button {
+            guard let id = self.service.response?.id else { return }
+            openInSafari(url: "https://p3project.herokuapp.com/view/\(id)")
+          } label: {
+            HStack {
+              Text("Посмотреть заявление")
+              Image(systemName: "doc.text")
+            }
+          }.padding([.horizontal, .bottom])
+          .foregroundColor(.gray)
+          
+          Button {
+            openInSafari(url: URLs.gis2)
+          } label: {
+            HStack {
+              Text("Отделения полиции")
+              Image(systemName: "mappin.and.ellipse")
+            }
+          }.padding([.horizontal, .bottom])
+          .foregroundColor(.gray)
+          Button {
+            openInSafari(url: URLs.gis2_vet)
+          } label: {
+            HStack {
+              Text("Вет. клиники")
+              Image(systemName: "waveform.path.ecg")
+            }
+          }.padding([.horizontal, .bottom])
+          .foregroundColor(.gray)
+          Button {
+            self.service.connect()
+          } label: {
+            Text("Отправить еще одну")
+          }.padding()
+        }
       } else {
         if self.service.response?.cmd == "end" {
-          Text("Ваша заявка принята!")
+          Text("Ваша заявка принята! Спасибо за вашу помощь!")
             .font(.title)
             .bold()
             .multilineTextAlignment(.center)
@@ -124,6 +175,10 @@ struct WebSocketView: View {
       self.service.writeUploaded()
       
     }
+  }
+  
+  func openInSafari(url: String) {
+    UIApplication.shared.open(URL(string: url)!)
   }
 }
 
