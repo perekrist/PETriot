@@ -1,0 +1,157 @@
+openapi: "3.0.0"
+info:
+  description: "My API"
+  version: "1.0.0"
+  title: "P3 project"
+servers:
+  - url: "https://p3project.herokuapp.com/api"
+  - url: "http://p3project.herokuapp.com/api"
+  - url: "http://0.0.0.0:9090/api"
+tags:
+  - name: "api"
+
+paths:
+  /tag/generate:
+    get:
+      tags: [api]
+      summary: "Проверить текст на совпадение по тегам"
+      parameters:
+        - in: "query"
+          schema:
+            type: string
+          allowReserved: false
+          name: "q"
+          description: "Строка, по которой искать"
+          required: true
+          example: "крч, я утром обнаружил убийство кота"
+      responses:
+        200:
+          description: "Успешно"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tag"
+  /proposal:
+    get:
+      tags: [api]
+      security:
+        - api_key: [ ]
+      summary: "Вернуть все мои заявки"
+      responses:
+        200:
+          description: "Успешно"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: "#/components/schemas/Proposal"
+                        - type: object
+                          properties:
+                            attachments:
+                              description: "id of attachments"
+                              type: array
+                              example: [ 1, 2, 3 ]
+                              items:
+                                type: "integer"
+    post:
+      tags: [api]
+      summary: "Создать новую заявку, требуется авторизация"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Proposal'
+      security:
+        - api_key: []
+      responses:
+        201:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 12
+                    description: "Id of new proposal"
+  /tag/{tag_id}:
+    get:
+      tags: [ api ]
+      summary: "Запросить тег по id"
+      parameters:
+        - in: "path"
+          schema:
+            type: integer
+          name: "tag_id"
+          description: "id of tag"
+          required: true
+          example: 5
+      responses:
+        200:
+          description: "Успешно"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+  /demand/attachment:
+    get:
+      tags: [ api ]
+      summary: "Запросить прикреплённый файл."
+      parameters:
+        - name: attachment_id
+          in: query
+          required: true
+          example: 1
+      responses:
+        200:
+          description: "Тут будут байты"
+
+components:
+  schemas:
+    Tag:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        present:
+          type: "string"
+          example: "кошки"
+    Proposal:
+      type: object
+      properties:
+        latitude:
+          type: integer
+          format: float
+          example: 56.461951
+        longitude:
+          type: integer
+          format: float
+          example: 84.947113
+        tags:
+          description: "id of tags"
+          type: array
+          example: [1, 2, 3]
+          items:
+            type: "integer"
+        attachments:
+          description: "имена файлов (должны быть разные)"
+          type: array
+          example: [ "a.jpeg", "b.mp4", "c.jpg" ]
+          items:
+            type: "string"
+
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header

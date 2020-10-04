@@ -1,1 +1,7 @@
 /Pods
+.mypy_cache
+.idea
+*__pycache__*
+*.egg-info*
+build/
+dist/

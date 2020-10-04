@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заявление от {{ meta['author'] }}</title>
+</head>
+<style>
+    .to_right {
+        text-align: right;
+    }
+
+    .to_center {
+        text-align: center;
+    }
+</style>
+<body>
+
+<div>
+    <div class="to_right">
+        Председателю ОО "Цифровые решения"<br/>
+        Дальневосточный Х.К.<br/>
+        от Петрио Н.А.<br/>
+        прож. по адресу ул. Хакатонова Г. Лидеров Росиии. д. 10 кв 4.<br/>
+        т. +7(003)010-20-20
+    </div>
+
+    <div class="to_center" style="font-size: 26px">
+        ЗАЯВЛЕНИЕ
+    </div>
+    <hr>
+
+    {% if steps.get('Была ли это породистая собака с документами?') %}
+        Породистая собака была
+        {% if steps.get('Укажите, что случилось.')['answer'] == [0] %}
+            ранена
+            {% if steps.get('Укажите вид оружия')['answer'] == [0] %}
+                ножом.
+            {% endif %}
+        {% endif %}
+    {% endif %}
+<br/><br/>
+    {{ steps.get('Расскажите что случилось')['answer'] }}
+{% for _ in range(5) %}
+<br/>
+{% endfor %}
+<div style="float: bottom; margin-bottom: 50px">
+    <div>
+        <table style="width:100%;">
+            <tr>
+                <td>{{ meta['date'] }}</td>
+                <td>________________</td>
+                <td>{{ meta['author'] }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
