@@ -409,14 +409,15 @@ async def tg_new_msg(request: 'P3Request') -> aiohttp.web.StreamResponse:
 @router.route('/admin/{q:.*}', '*')
 @router.route('/static/{q:.*}', '*')
 async def django_proxy_handler(request: 'P3Request'):
-    logger.warning(' '.join([f'{request.query=}', f'{request.raw_path=}'
-                             f'{request.rel_url=}']))
+    user_data = await request.read()
     async with aiohttp.ClientSession(headers=request.headers) as session:
-        p = int(os.getenv('PORT', 9090)) + 1
+        p = os.getenv('DJ_SRV_PORT', int(os.getenv('PORT', 9090)) + 1)
+        srv_host = os.getenv('DJ_SRV', 'http://0.0.0.0')
+        logger.info(url := f'{srv_host}:{p}{request.raw_path}')
         async with session.request(
             request.method,
-            f'http://localhost:{p}{request.raw_path}',
-            data=await request.read()
+            url,
+            data=user_data
         ) as resp:
             return aiohttp.web.Response(
                 status=resp.status,
