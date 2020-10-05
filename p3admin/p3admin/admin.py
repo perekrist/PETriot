@@ -1,14 +1,17 @@
 from django.contrib import admin
-from p3admin.models import TgMessage, Question
+from p3admin.models import TgMessage, Question, Proposal
 
 
 @admin.register(TgMessage)
 class TgMessageAdmin(admin.ModelAdmin):
-    class Meta:
-        verbose_name_plural = 'Сообщения с телеграмма'
+    pass
 
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    class Meta:
-        verbose_name_plural = 'Вопросы графа'
+    pass
+
+
+@admin.register(Proposal)
+class ProposalAdmin(admin.ModelAdmin):
+    pass

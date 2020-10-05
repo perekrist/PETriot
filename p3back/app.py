@@ -5,13 +5,11 @@ import aiopg.sa
 from pathlib import Path
 import aiohttp_jinja2
 import jinja2
-import subprocess
+import threading
 import sys
 
 import aiohttp_plugin
 from . import views
-
-django_proc = None
 
 
 class P3Application(aiohttp.web.Application):
@@ -31,15 +29,22 @@ def init_jinja2(app: aiohttp.web.Application) -> None:
     )
 
 
-def start_django():
-    global django_proc
+def start_other():
     e = sys.executable
     p = int(os.getenv('PORT', 9090)) + 1
-    django_proc = subprocess.Popen([e, 'p3admin/manage.py', 'runserver', str(p)])
+
+    def start_django():
+        return os.popen(f'{e} p3admin/manage.py runserver {p}')
+
+    def start_bot():
+        return os.popen(f'{e} p3back/tg_bot.py').read()
+
+    threading.Thread(target=start_django).start()
+    threading.Thread(target=start_bot).start()
 
 
 def main():
-    start_django()
+    start_other()
     app = P3Application()
     init_jinja2(app)
     app.cleanup_ctx.append(aiohttp_plugin.database_cleanup)
